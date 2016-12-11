@@ -1,30 +1,41 @@
 Zepto Slide Transition
 ======================
 
-The Zepto Slide Transition plugin add to Zepto.js the functions bellow :
-- slideDown();
-- slideUp();
-- slideToggle();
+This is an updated version of the zepto slide transitions. 
 
-# Requirement
+The original and other forks have a bug which forces the animated elements retain a fixed size after the animation is completed.
 
-Like a jQuery plugin, this Zepto plugin needs Zepto to work. You can download Zepto at this adress http://zeptojs.com or find its repository here : https://github.com/madrobby/zepto.
+In addition, the original `.slideToggle()` wasn't passing duration to `.slideUp()` or `.slideDown()`
 
-N.B. You can't use Zepto with jQuery, it's one or the other.
+There's now a callback for the animation completion.
 
-# How to use
+Zepto Slide Transitions plugin adds the following functions to Zepto.js:
 
-- You need to add the following to your page in your ```<head></head>``` or in your ```<body></body>```, just before the ```</body>```.
+* slideDown();
+* slideUp();
+* slideToggle();
+
+# Requirements:
+
+This Zepto.js plugin requires Zepto.js to run (duh)
+
+# Usage
+
+* Include Zepto.js and this plugin:
 
 ```html
 <script src="zepto.min.js"></script>
 <script src="zepto-slide-transition.js"></script>
 ```
 
-- Then just use the slide function like you can use it with jQuery :
+* The function is similar to jQuery: it takes `duration` and `callback` arguments:
 
 ```javascript
-$('element').slideUp();
-$('element').slideDown();
-$('element').slideToggle();
+$('element').slideUp(1500, function callback(elem) { console.log('Finished with', elem); });
+$('element').slideDown(250, do_something);
+$('element').slideToggle(350, do_something_else);
 ```
+
+# TODO
+
+* Prevent the functions from working on an element that is already undergoing a transition
